@@ -1,0 +1,33 @@
+﻿@model ICollection<ArticleViewModel>
+
+<div class="text-center">
+    <h1 class="display-4">Top news of the Day</h1>
+    <h3>
+        <span id="datetime"></span>
+        <script>
+var dt = new Date().toDateString();
+            document.getElementById("datetime").innerHTML = dt.toLocaleString();</script>
+    </h3>
+    <br />
+    <form asp-action="CreatePDF">
+        <input type="submit" value="Download list" class="btn btn-primary"/>
+    </form>
+    <br />
+</div>
+<div class="row text-center">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-4 mb-3">
+            <div class="card h-100">
+                <img class="card-img-top" src=@item.URLToImage alt="">
+                <div class="card-body">
+                    <h4 class="card-title">@item.Title</h4>
+                    <p class="card-text">@item.Content</p>
+                </div>
+                <div class="card-footer">
+                    <a href=@item.URL class="btn btn-primary" target="_blank">Find Out More!</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

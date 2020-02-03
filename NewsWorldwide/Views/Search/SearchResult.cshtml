@@ -1,0 +1,37 @@
+﻿@model SearchViewModel
+
+@if (Model.Articles.Count() == 0)
+{
+    <div class="text-center">
+        <br />
+        <h3 class="display-4"> No results found for: "@Model.Criteria" </h3>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h3 class="display-4"> Showing results for: "@Model.Criteria" </h3>
+        <form asp-action="CreatePDF">
+            <input type="text" asp-for="@Model.Criteria" value="@Model.Criteria" hidden />
+            <input type="submit" value="Download list" class="btn btn-primary" />
+        </form>
+        <br />
+    </div>
+    <div class="row text-center">
+        @foreach (var item in Model.Articles)
+        {
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src=@item.UrlToImage alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Title</h4>
+                        <p class="card-text">@item.Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href=@item.Url class="btn btn-primary" target="_blank">Find Out More!</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
