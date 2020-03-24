@@ -1,33 +1,75 @@
-﻿@model ICollection<ArticleViewModel>
+﻿@model IEnumerable<ArticleViewModel>
 
-<div class="text-center">
-    <h1 class="display-4">Top news of the Day</h1>
-    <h3>
-        <span id="datetime"></span>
-        <script>
-var dt = new Date().toDateString();
-            document.getElementById("datetime").innerHTML = dt.toLocaleString();</script>
-    </h3>
-    <br />
-    <form asp-action="CreatePDF">
-        <input type="submit" value="Download list" class="btn btn-primary"/>
-    </form>
-    <br />
-</div>
-<div class="row text-center">
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-3 col-md-4 mb-3">
-            <div class="card h-100">
-                <img class="card-img-top" src=@item.URLToImage alt="">
-                <div class="card-body">
-                    <h4 class="card-title">@item.Title</h4>
-                    <p class="card-text">@item.Content</p>
-                </div>
-                <div class="card-footer">
-                    <a href=@item.URL class="btn btn-primary" target="_blank">Find Out More!</a>
+<!-- Page top Section end -->
+<section class="page-top-section set-bg" data-setbg="../../img/page-top-bg/3.jpg">
+    <div class="container">
+        <h2>News</h2>
+        <nav class="site-breadcrumb">
+            <a class="sb-item" href="#">Home</a>
+            @*<span class="sb-item active"> @DateTime.Today.Date.AddDays(45).ToString("dd MMMM yyyy")</span>*@
+        </nav>
+    </div>
+</section>
+<!-- Page top Section end -->
+<!-- Blog Section end -->
+<div class="container">
+    <main role="main" class="pb-3">
+        <section class="blog-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        @foreach (var item in Model)
+                        {
+                            <div class="blog-post">
+                                <img src=@item.URLToImage alt="Image not found" style="width: 800px; height: auto;">
+                                <div class="blog-date">@item.PublishedAt.ToString("dd MMMM yyyy")</div>
+                                <h2 class="blog-title">@item.Title</h2>
+                                <p>@item.Description</p>
+                                <a href=@item.URL class="readmore">Read More <img src="img/arrow.png" alt=""></a>
+                            </div>
+                        }
+                        <div class="site-pagination">
+                            <a href="#">01.</a>
+                            <a href="#">02.</a>
+                            <a href="#">03</a>
+                            <form asp-action="CreatePDF">
+                                <input type="submit" value="Download list" class="blog-date" />
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 sidebar">
+                        <div class="sb-widget">
+                            <form class="search-form">
+                                <input type="text" placeholder="Search by keyword">
+                                <button><img src="img/search-icon.png" alt=""></button>
+                            </form>
+                        </div>
+                        <div class="sb-widget">
+                            <h2 class="sb-title">Categories</h2>
+                            <div class="tags">
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="ar">Argentina</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="be">Belgium</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="bg">Bulgaria</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="ca">Canada</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="fr">France</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="de">Germany</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="gr">Greece</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="it">Italy</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="jp">Japan</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="pt">Portugal</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="ru">Russia</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="tr">Turkey</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="ua">Ukraine</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="gb">United Kingdom</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="us">United States</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="sg">Singapore</a>
+                                <a asp-controller="Home" asp-action="Index" asp-route-country="ch">Switzerland</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        </section>
+    </main>
 </div>
+<!-- Blog Section end -->

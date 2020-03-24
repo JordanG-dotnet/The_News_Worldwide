@@ -24,9 +24,9 @@ namespace NewsWorldwide.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string country = "bg", int currPage = 1)
         {
-            var list = TopNews();
+            var list = TopNews(country).Skip((currPage - 1)*5).Take(5);
 
             return View(list);
         }
@@ -68,11 +68,8 @@ namespace NewsWorldwide.Controllers
 
         private PdfPTable AddContentToPDF(PdfPTable tableLayout)
         {
-            var list = TopNews();
-            float[] headers = {
-        40,
-        60
-    };
+            var list = TopNews("us");
+            float[] headers = { 40, 60 };
             //Header Widths  
             tableLayout.SetWidths(headers); //Set the pdf headers  
             tableLayout.WidthPercentage = 80; //Set the PDF File witdh percentage  
@@ -116,11 +113,9 @@ namespace NewsWorldwide.Controllers
             });
         }
 
-        private List<ArticleViewModel> TopNews()
+        private List<ArticleViewModel> TopNews(string country)
         {
-            var url = "https://newsapi.org/v2/top-headlines?" +
-          "country=us&" +
-          "apiKey=10c6e0f03663414faeeb4ec6bc798bf4";
+            var url = $"https://newsapi.org/v2/top-headlines?country={country}&apiKey=10c6e0f03663414faeeb4ec6bc798bf4";
 
             var json = new WebClient().DownloadData(url);
             List<ArticleViewModel> list = new List<ArticleViewModel>();
@@ -131,6 +126,7 @@ namespace NewsWorldwide.Controllers
                 WriteIndented = true
             };
             var newJson = JsonSerializer.Deserialize<NewsViewModel>(json, options);
+
 
             foreach (var item in newJson.Articles)
             {
