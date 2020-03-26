@@ -20,12 +20,12 @@
                         @if (Model.Articles.Count() == 0)
                         {
                             <div class="element">
-                                <h3 class="el-title">Milestones</h3>
+                                <h3 class="el-title">Oops, sorry! <i class="flaticon-033-chat"></i></h3>
                                 <div class="row">
                                     <div class="col-lg-3 col-sm-6">
                                         <div class="milestone">
                                             <div class="milestone-icon">
-                                                <i class="flaticon-010-contract"></i>
+                                                <i class="flaticon-015-worldwide-1"></i>
                                             </div>
                                             <div class="milestone-text">
                                                 <h3>0</h3>
@@ -41,7 +41,7 @@
                                     <div class="col-md-4">
                                         <div class="icon-box-item">
                                             <div class="ib-icon">
-                                                <i class="flaticon-012-24-hours"></i>
+                                                <i class="flaticon-007-house"></i>
                                             </div>
                                             <div class="ib-text">
                                                 <h5>Money in 1 Hour!</h5>
@@ -52,7 +52,7 @@
                                     <div class="col-md-4">
                                         <div class="icon-box-item">
                                             <div class="ib-icon">
-                                                <i class="flaticon-036-customer-service"></i>
+                                                <i class="flaticon-010-contract"></i>
                                             </div>
                                             <div class="ib-text">
                                                 <h5>Helpfull Staff</h5>
@@ -63,7 +63,7 @@
                                     <div class="col-md-4">
                                         <div class="icon-box-item">
                                             <div class="ib-icon">
-                                                <i class="flaticon-039-info"></i>
+                                                <i class="flaticon-021-email"></i>
                                             </div>
                                             <div class="ib-text">
                                                 <h5>Credit History Considered</h5>
@@ -91,22 +91,22 @@
                                 {
                                     @if (Model.CurrentPage == i)
                                     {
-                                        <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-currPage="@i" class="active">@i.ToString("00").</a>
+                                        <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-language="@Model.Language" asp-route-currPage="@i" class="active">@i.ToString("00").</a>
                                     }
                                     else if (i == Model.Articles.First().TotalNumPages)
                                     {
-                                        <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-currPage="@i">@i.ToString("00")</a>
+                                        <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-language="@Model.Language" asp-route-currPage="@i">@i.ToString("00")</a>
                                     }
                                     else
                                     {
-                                        <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-currPage="@i">@i.ToString("00").</a>
+                                        <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-language="@Model.Language" asp-route-currPage="@i">@i.ToString("00").</a>
                                     }
                                 }
                             </div>
                             <br />
                             <div class="sb-widget">
                                 <div class="tags">
-                                    <a asp-controller="CreatePDF" asp-action="CreatePDF" asp-route-criteria="@Model.Criteria" asp-route-type="search">Download list</a>
+                                    <a asp-controller="CreatePDF" asp-action="CreatePDF" asp-route-criteria="@Model.Criteria" asp-route-language="@Model.Language" asp-route-type="search">Download list</a>
                                 </div>
                             </div>
                         }
@@ -114,7 +114,21 @@
                     <div class="col-lg-4 col-md-6 sidebar">
                         <div class="sb-widget">
                             <form asp-controller="Search" asp-action="SearchResult" class="search-form">
-                                <input type="text" name="criteria" placeholder="Search by keyword">
+                                <select class="btn-info" name="language" style="height: 58px; background-color: orangered; border-top-color: orangered; border-bottom-color: orangered; border-left-color: orangered; border-right-color: orangered">
+                                    @foreach (var item in Enum.GetNames(typeof(Languages)).Cast<String>())
+                                    {
+                                        if (item.ToLower() == Model.Language.ToLower())
+                                        {
+                                            <option value="@item" selected>@item</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item">@item</option>
+                                        }
+                                    }
+
+                                </select>
+                                <input type="text" name="criteria" placeholder="Search" style="width: 290px">
                                 <button><img src="~/img/search-icon.png" alt=""></button>
                             </form>
                         </div>
@@ -123,6 +137,7 @@
                             <div class="tags">
                                 @foreach (var item in Enum.GetNames(typeof(Countries)).Cast<String>())
                                 {
+
                                     <a asp-controller="Home" asp-action="Index" asp-route-country="@item">@item</a>
                                 }
                             </div>

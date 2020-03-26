@@ -20,16 +20,16 @@ namespace NewsWorldwide.Data
             { 
                 Country = cont
             });
-
             return topNews.Articles.MapToListArticleViewModel();
         }
 
-        public static IEnumerable<ArticleViewModel> GetSearchResults(string criteria)
+        public static IEnumerable<ArticleViewModel> GetSearchResults(string criteria, string language)
         {
+            var lang = Enum.Parse<Languages>(language.ToUpper());
             var articlesResponse = newsApiClient.GetEverything(new EverythingRequest
             {
                 Q = criteria,
-                Language = Languages.EN
+                Language = lang
             });
 
             return articlesResponse.Articles.MapToListArticleViewModel();

@@ -11,7 +11,7 @@ namespace NewsWorldwide.Controllers
 {
     public class CreatePDFController : Controller
     {
-        public FileResult CreatePDF(string country = "bg", string type = "", string criteria = "")
+        public FileResult CreatePDF(string country = "bg", string language="en", string type = "", string criteria = "")
         {
             MemoryStream workStream = new MemoryStream();
             //StringBuilder status = new StringBuilder("");
@@ -28,7 +28,7 @@ namespace NewsWorldwide.Controllers
             doc.Open();
 
             //Add Content to PDF   
-            doc.Add(AddContentToPDF(tableLayout, country, type, criteria));
+            doc.Add(AddContentToPDF(tableLayout, country, language, type, criteria));
 
             // Closing the document  
             doc.Close();
@@ -41,7 +41,7 @@ namespace NewsWorldwide.Controllers
             return File(workStream, "application/pdf", strPDFFileName);
         }
 
-        private PdfPTable AddContentToPDF(PdfPTable tableLayout, string country, string type, string criteria)
+        private PdfPTable AddContentToPDF(PdfPTable tableLayout, string country, string language, string type, string criteria)
         {
             IEnumerable<ArticleViewModel> list = new List<ArticleViewModel>();
             switch (type)
@@ -50,7 +50,7 @@ namespace NewsWorldwide.Controllers
                     list = GetNews.TopNews(country);
                     break;
                 case "search":
-                    list = GetNews.GetSearchResults(criteria);
+                    list = GetNews.GetSearchResults(criteria, language);
                     break;
                 default:
                     break;

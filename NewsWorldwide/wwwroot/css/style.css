@@ -307,6 +307,13 @@ Commom elements
 	width: 75px;
 }
 
+.milestone-example {
+	float: left;
+	font-size: 100px;
+	color: #f43f00;
+	width: 75px;
+}
+
 .milestone-text {
 	overflow: hidden;
 	padding-top: 15px;

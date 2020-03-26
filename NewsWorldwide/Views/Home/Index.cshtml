@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ArticleViewModel>
+
 <!-- Page top Section end -->
 <section class="page-top-section set-bg" data-setbg="../../img/page-top-bg/4.jpg">
     <div class="container">
@@ -53,8 +54,22 @@
                     <div class="col-lg-4 col-md-6 sidebar">
                         <div class="sb-widget">
                             <form asp-controller="Search" asp-action="SearchResult" class="search-form">
-                                <input type="text" name="criteria" placeholder="Search by keyword">
-                                <button type="submit"><img src="img/search-icon.png" alt=""></button>
+                                <select class="btn-info" name="language" style="height: 58px; background-color: orangered; border-top-color: orangered; border-bottom-color: orangered; border-left-color: orangered; border-right-color: orangered">
+                                    @foreach (var item in Enum.GetNames(typeof(Languages)).Cast<String>())
+                                    {
+                                        if (item.ToLower() == "en")
+                                        {
+                                            <option value="@item" selected>@item</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item">@item</option>
+                                        }
+                                    }
+
+                                </select>
+                                <input type="text" name="criteria" placeholder="Search" style="width: 290px">
+                                <button type="submit"><img src="~/img/search-icon.png" alt=""></button>
                             </form>
                         </div>
                         <div class="sb-widget">
@@ -62,7 +77,14 @@
                             <div class="tags">
                                 @foreach (var item in Enum.GetNames(typeof(Countries)).Cast<String>())
                                 {
-                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@item">@item</a>
+                                    if (item.ToLower() == Model.First().Country.ToLower())
+                                    {
+                                        <a asp-controller="Home" asp-action="Index" asp-route-country="@item" style="background-color: orangered;" class="text-white">@item</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-controller="Home" asp-action="Index" asp-route-country="@item">@item</a>
+                                    }
                                 }
                             </div>
                         </div>
