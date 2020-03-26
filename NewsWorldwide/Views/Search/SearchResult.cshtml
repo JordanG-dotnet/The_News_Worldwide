@@ -1,43 +1,6 @@
 ﻿@model SearchViewModel
-
-@*@if (Model.Articles.Count() == 0)
-    {
-        <div class="text-center">
-            <br />
-            <h3 class="display-4"> No results found for: "@Model.Criteria" </h3>
-        </div>
-    }
-    else
-    {
-        <div class="text-center">
-            <h3 class="display-4"> Showing results for: "@Model.Criteria" </h3>
-            <form asp-action="CreatePDF">
-                <input type="text" asp-for="@Model.Criteria" value="@Model.Criteria" hidden />
-                <input type="submit" value="Download list" class="btn btn-primary" />
-            </form>
-            <br />
-        </div>
-        <div class="row text-center">
-            @foreach (var item in Model.Articles)
-            {
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <img class="card-img-top" src=@item.URLToImage alt="">
-                        <div class="card-body">
-                            <h4 class="card-title">@item.Title</h4>
-                            <p class="card-text">@item.Description</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href=@item.URL class="btn btn-primary" target="_blank">Find Out More!</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    }*@
-
 <!-- Page top Section end -->
-<section class="page-top-section set-bg" data-setbg="../../img/page-top-bg/4.jpg">
+<section class="page-top-section set-bg" data-setbg="../../img/page-top-bg/3.jpg">
     <div class="container">
         <h2>Search Results</h2>
         <nav class="site-breadcrumb">
@@ -120,16 +83,31 @@
                                     <div class="blog-date">@item.PublishedAt?.ToString("dd MMMM yyyy")</div>
                                     <h2 class="blog-title">@item.Title</h2>
                                     <p>@item.Description</p>
-                                    <a href=@item.URL class="readmore" target="_blank">Read More <img src="img/arrow.png" alt=""></a>
+                                    <a href=@item.URL class="readmore" target="_blank">Read More <img src="~/img/arrow.png" alt=""></a>
                                 </div>
                             }
                             <div class="site-pagination">
-                                <a href="#">01.</a>
-                                <a href="#">02.</a>
-                                <a href="#">03</a>
+                                @for (int i = 1; i <= Model.Articles.First().TotalNumPages; i++)
+                                {
+                                    @if (Model.CurrentPage == i)
+                                    {
+                                        <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-currPage="@i" class="active">@i.ToString("00").</a>
+                                    }
+                                    else if (i == Model.Articles.First().TotalNumPages)
+                                    {
+                                        <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-currPage="@i">@i.ToString("00")</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-currPage="@i">@i.ToString("00").</a>
+                                    }
+                                }
                             </div>
-                            <div class="blog-date">
-                                <a asp-controller="CreatePDF" asp-action="CreatePDF" asp-route-criteria="@Model.Criteria" asp-route-type="search">Download list</a>
+                            <br />
+                            <div class="sb-widget">
+                                <div class="tags">
+                                    <a asp-controller="CreatePDF" asp-action="CreatePDF" asp-route-criteria="@Model.Criteria" asp-route-type="search">Download list</a>
+                                </div>
                             </div>
                         }
                     </div>

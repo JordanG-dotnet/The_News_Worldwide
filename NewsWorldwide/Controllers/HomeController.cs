@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using NewsWorldwide.Models;
 using NewsWorldwide.Data;
 

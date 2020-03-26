@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<ArticleViewModel>
-
 <!-- Page top Section end -->
-<section class="page-top-section set-bg" data-setbg="../../img/page-top-bg/3.jpg">
+<section class="page-top-section set-bg" data-setbg="../../img/page-top-bg/4.jpg">
     <div class="container">
         <h2>Top News</h2>
         <nav class="site-breadcrumb">
@@ -24,24 +23,31 @@
                                 <div class="blog-date">@item.PublishedAt?.ToString("dd MMMM yyyy")</div>
                                 <h2 class="blog-title">@item.Title</h2>
                                 <p>@item.Description</p>
-                                <a href=@item.URL class="readmore" target="_blank">Read More <img src="img/arrow.png" alt=""></a>
+                                <a href=@item.URL class="readmore" target="_blank">Read More <img src="~/img/arrow.png" alt=""></a>
                             </div>
                         }
-                    <div class="site-pagination">
-                        @for (int i = 1; i <= Model.First().TotalNumPages; i++)
-                        {
-                            @if (Model.First().CurrentPage == i)
+                        <div class="site-pagination">
+                            @for (int i = 1; i <= Model.First().TotalNumPages; i++)
                             {
-                                <a id="" asp-controller="Home" asp-action="Index" asp-route-country="@Model.First().Country" asp-route-currPage="@i" class="active">@i.</a>
+                                @if (Model.First().CurrentPage == i)
+                                {
+                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.First().Country" asp-route-currPage="@i" class="active">@i.ToString("00").</a>
+                                }
+                                else if (i == Model.First().TotalNumPages)
+                                {
+                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.First().Country" asp-route-currPage="@i">@i.ToString("00")</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.First().Country" asp-route-currPage="@i">@i.ToString("00").</a>
+                                }
                             }
-                            else
-                            {
-                                <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.First().Country" asp-route-currPage="@i">@i.</a>
-                            }
-                        }
-                    </div>
-                        <div class="blog-date">
-                            <a asp-controller="CreatePDF" asp-action="CreatePDF" asp-route-country="@Model.First().Country" asp-route-type="top" >Download list</a>
+                        </div>
+                        <br />
+                        <div class="sb-widget">
+                            <div class="tags">
+                                <a asp-controller="CreatePDF" asp-action="CreatePDF" asp-route-country="@Model.First().Country" asp-route-type="top">Download list</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 sidebar">

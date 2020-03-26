@@ -7,6 +7,7 @@ namespace NewsWorldwide.Models
     public class SearchViewModel
     {
         public string Criteria { get; set; }
+        public int CurrentPage { get; set; }
         public IEnumerable<ArticleViewModel> Articles { get; set; }
     }
 }
