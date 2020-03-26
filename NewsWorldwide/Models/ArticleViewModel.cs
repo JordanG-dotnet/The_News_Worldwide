@@ -8,10 +8,9 @@ namespace NewsWorldwide.Models
         public string Description { get; set; }
         public string URL { get; set; }
         public string URLToImage { get; set; }
-        public DateTime PublishedAt { get; set; }
-        public string Content { get; set; }
+        public DateTime? PublishedAt { get; set; }
         public string Country { get; set; }
         public int CurrentPage { get; set; }
-        public int TotalNumPages { get; set; }
+        public int TotalNumPages => 7;
     }
 }
