@@ -62,65 +62,43 @@
         </nav>
     </header>
     <!-- Header Section end -->
-    
+
     @RenderBody()
 
     <!-- Footer Section -->
     <footer class="footer-section">
         <div class="container">
-            <a href="index.html" class="footer-logo">
-                <img src="~/img/NEWS2GO-logo1.tif" alt="">
-            </a>
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget">
-                        <h2>What we do</h2>
+                <div class="footer-widget col-lg-3 col-sm-6">
+                    <form class="contact-form">
+                        <h2>About us</h2>
                         <ul>
+                            <li><a asp-controller="Home" asp-action="AboutUs">About us</a></li>
+                            <li><a asp-action="Privacy">Privacy policy</a></li>
                             <li><a href="#">Loans</a></li>
                             <li><a href="#">Car loans</a></li>
                             <li><a href="#">Debt consolidation loans</a></li>
                             <li><a href="#">Home improvement loans</a></li>
-                            <li><a href="#">Wedding loans</a></li>
-                            <li><a href="#">Innovative Finance ISA</a></li>
                         </ul>
-                    </div>
+                    </form>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget">
-                        <h2>About us</h2>
-                        <ul>
-                            <li><a asp-controller="Home" asp-action="AboutUs">About us</a></li>
-                            <li><a href="#">Our story</a></li>
-                            <li><a href="#">Meet the board</a></li>
-                            <li><a href="#">Meet the leadership team</a></li>
-                            <li><a href="#">Awards</a></li>
-                            <li><a href="#">Careers</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget">
-                        <h2>Legal</h2>
-                        <ul>
-                            <li><a asp-action="Privacy">Privacy policy</a></li>
-                            <li><a href="#">Loans2go principles</a></li>
-                            <li><a href="#">Website terms</a></li>
-                            <li><a href="#">Cookie policy</a></li>
-                            <li><a href="#">Conflicts policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget">
-                        <h2>Site Info</h2>
-                        <ul>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Sitemap</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Contact us</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-widget col-lg-8 col-sm-6">
+                    <form asp-controller="Email" asp-action="SendEmail" class="contact-form">
+                        <h2>Contact us</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" name="name" placeholder="Your Name">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="fromEmail" placeholder="Your E-mail">
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" name="subject" placeholder="Subject">
+                                <textarea placeholder="Your Message" name="message" style="height: 100px"></textarea>
+                                <button type="submit" class="site-btn">send message</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <p>This web site is created as a project portfolio for the sole purpose of presenting it to hiring teams. The design template is the fre download version of LOANS2GO, which you can find on the following link: <a href="https://colorlib.com/wp/template/loans2go/" target="_blank">https://colorlib.com/wp/template/loans2go/</a> </p>
