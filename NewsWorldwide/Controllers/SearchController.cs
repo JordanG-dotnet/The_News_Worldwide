@@ -2,12 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using NewsWorldwide.Data;
 using NewsWorldwide.Models;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NewsWorldwide.Controllers
 {
     public class SearchController : Controller
     {
-        public IActionResult SearchResult(string criteria, string language = "en", int currPage = 1)
+        public async  Task<IActionResult> SearchResult(string criteria, string language = "en", int currPage = 1)
         {
             if (criteria != null)
             {
@@ -15,9 +16,9 @@ namespace NewsWorldwide.Controllers
                 searchViewModel.Criteria = criteria;
                 searchViewModel.CurrentPage = currPage;
                 searchViewModel.Language = language;
-                var articlesResponse = GetNews.GetSearchResults(criteria, language).Skip((currPage - 1) * 3).Take(3);
-                
-                searchViewModel.Articles = articlesResponse;
+                var articlesResponse = await GetNews.GetSearchResults(criteria, language);
+                searchViewModel.TotalNumPages = Calculations.TotalNumPages(articlesResponse.Count());
+                searchViewModel.Articles = articlesResponse.Skip((currPage - 1) * 3).Take(3);
                 return View(searchViewModel);
             }
             else

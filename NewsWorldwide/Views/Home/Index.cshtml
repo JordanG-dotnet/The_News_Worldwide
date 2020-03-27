@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ArticleViewModel>
+﻿@model TopNewsViewModel
 
 <!-- Page top Section end -->
 <section class="page-top-section set-bg" data-setbg="../../img/page-top-bg/4.jpg">
@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Articles)
                         {
                             <div class="blog-post">
                                 <img src=@item.URLToImage alt="Image not found" style="width: 800px; height: auto;">
@@ -28,26 +28,26 @@
                             </div>
                         }
                         <div class="site-pagination">
-                            @for (int i = 1; i <= Model.First().TotalNumPages; i++)
+                            @for (decimal i = 1; i <= Model.TotalNumPages; i++)
                             {
-                                @if (Model.First().CurrentPage == i)
+                                @if (Model.CurrentPage == i)
                                 {
-                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.First().Country" asp-route-currPage="@i" class="active">@i.ToString("00").</a>
+                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.Country" asp-route-currPage="@i" class="active">@i.ToString("00").</a>
                                 }
-                                else if (i == Model.First().TotalNumPages)
+                                else if (i == Model.TotalNumPages)
                                 {
-                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.First().Country" asp-route-currPage="@i">@i.ToString("00")</a>
+                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.Country" asp-route-currPage="@i">@i.ToString("00")</a>
                                 }
                                 else
                                 {
-                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.First().Country" asp-route-currPage="@i">@i.ToString("00").</a>
+                                    <a asp-controller="Home" asp-action="Index" asp-route-country="@Model.Country" asp-route-currPage="@i">@i.ToString("00").</a>
                                 }
                             }
                         </div>
                         <br />
                         <div class="sb-widget">
                             <div class="tags">
-                                <a asp-controller="CreatePDF" asp-action="CreatePDF" asp-route-country="@Model.First().Country" asp-route-type="top">Download list</a>
+                                <a asp-controller="CreatePDF" asp-action="CreatePDF" asp-route-country="@Model.Country" asp-route-type="top">Download list</a>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                             <div class="tags">
                                 @foreach (var item in Enum.GetNames(typeof(Countries)).Cast<String>())
                                 {
-                                    if (item.ToLower() == Model.First().Country.ToLower())
+                                    if (item.ToLower() == Model.Country.ToLower())
                                     {
                                         <a asp-controller="Home" asp-action="Index" asp-route-country="@item" style="background-color: orangered;" class="text-white">@item</a>
                                     }

@@ -3,18 +3,22 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using NewsWorldwide.Models;
 using NewsWorldwide.Data;
+using System.Threading.Tasks;
 
 namespace NewsWorldwide.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(string country = "bg", int currPage = 1)
+        public async Task<IActionResult> Index(string country = "bg", int currPage = 1)
         {
-            var list = GetNews.TopNews(country.ToLower()).Skip((currPage - 1)*3).Take(3);
-            list.First().Country = country.ToLower();
-            list.First().CurrentPage = currPage;
+            var topNewsViewModel = new TopNewsViewModel();
+            var list = await GetNews.TopNews(country.ToLower());
+            topNewsViewModel.Articles = list.Skip((currPage - 1) * 3).Take(3);
+            topNewsViewModel.Country = country.ToLower();
+            topNewsViewModel.CurrentPage = currPage;
+            topNewsViewModel.TotalNumPages = Calculations.TotalNumPages(list.Count());
 
-            return View(list);
+            return View(topNewsViewModel);
         }
 
         public IActionResult Privacy()

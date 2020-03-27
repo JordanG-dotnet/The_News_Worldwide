@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using NewsAPI.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NewsWorldwide.Models
 {
-    public class SearchViewModel
+    public class TopNewsViewModel
     {
-        public string Criteria { get; set; }
+        public string Country { get; set; }
         public int CurrentPage { get; set; }
         public decimal TotalNumPages { get; set; }
-        public string Language { get; set; }
         public IEnumerable<ArticleViewModel> Articles { get; set; }
     }
 }

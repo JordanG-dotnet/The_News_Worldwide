@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ namespace NewsWorldwide.Controllers
 {
     public class CreatePDFController : Controller
     {
-        public FileResult CreatePDF(string country = "bg", string language="en", string type = "", string criteria = "")
+        public async Task<FileResult> CreatePDF(string country = "bg", string language="en", string type = "", string criteria = "")
         {
             MemoryStream workStream = new MemoryStream();
             //StringBuilder status = new StringBuilder("");
@@ -28,7 +29,7 @@ namespace NewsWorldwide.Controllers
             doc.Open();
 
             //Add Content to PDF   
-            doc.Add(AddContentToPDF(tableLayout, country, language, type, criteria));
+            doc.Add(await AddContentToPDF(tableLayout, country, language, type, criteria));
 
             // Closing the document  
             doc.Close();
@@ -41,16 +42,16 @@ namespace NewsWorldwide.Controllers
             return File(workStream, "application/pdf", strPDFFileName);
         }
 
-        private PdfPTable AddContentToPDF(PdfPTable tableLayout, string country, string language, string type, string criteria)
+        private async Task<PdfPTable> AddContentToPDF(PdfPTable tableLayout, string country, string language, string type, string criteria)
         {
             IEnumerable<ArticleViewModel> list = new List<ArticleViewModel>();
             switch (type)
             {
                 case "top":
-                    list = GetNews.TopNews(country);
+                    list = await GetNews.TopNews(country);
                     break;
                 case "search":
-                    list = GetNews.GetSearchResults(criteria, language);
+                    list = await GetNews.GetSearchResults(criteria, language);
                     break;
                 default:
                     break;

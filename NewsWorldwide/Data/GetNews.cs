@@ -5,6 +5,7 @@ using NewsWorldwide.Extensions;
 using NewsWorldwide.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NewsWorldwide.Data
 {
@@ -13,20 +14,21 @@ namespace NewsWorldwide.Data
         private static readonly string apiKey = "10c6e0f03663414faeeb4ec6bc798bf4";
         private static readonly NewsApiClient newsApiClient = new NewsApiClient(apiKey);
 
-        public static IEnumerable<ArticleViewModel> TopNews(string country)
+        public static async Task<IEnumerable<ArticleViewModel>> TopNews(string country)
         {
             var cont = Enum.Parse<Countries>(country.ToUpper());
-            var topNews = newsApiClient.GetTopHeadlines(new TopHeadlinesRequest()
+            var topNews = await newsApiClient.GetTopHeadlinesAsync(new TopHeadlinesRequest()
             { 
                 Country = cont
             });
-            return topNews.Articles.MapToListArticleViewModel();
+            var list = topNews.Articles.MapToListArticleViewModel();
+            return list;
         }
 
-        public static IEnumerable<ArticleViewModel> GetSearchResults(string criteria, string language)
+        public static async Task<IEnumerable<ArticleViewModel>> GetSearchResults(string criteria, string language)
         {
             var lang = Enum.Parse<Languages>(language.ToUpper());
-            var articlesResponse = newsApiClient.GetEverything(new EverythingRequest
+            var articlesResponse = await newsApiClient.GetEverythingAsync(new EverythingRequest
             {
                 Q = criteria,
                 Language = lang

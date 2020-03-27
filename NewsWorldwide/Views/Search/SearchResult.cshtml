@@ -87,13 +87,13 @@
                                 </div>
                             }
                             <div class="site-pagination">
-                                @for (int i = 1; i <= Model.Articles.First().TotalNumPages; i++)
+                                @for (decimal i = 1; i <= Model.TotalNumPages; i++)
                                 {
                                     @if (Model.CurrentPage == i)
                                     {
                                         <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-language="@Model.Language" asp-route-currPage="@i" class="active">@i.ToString("00").</a>
                                     }
-                                    else if (i == Model.Articles.First().TotalNumPages)
+                                    else if (i == Model.TotalNumPages)
                                     {
                                         <a asp-controller="Search" asp-action="SearchResult" asp-route-criteria="@Model.Criteria" asp-route-language="@Model.Language" asp-route-currPage="@i">@i.ToString("00")</a>
                                     }
