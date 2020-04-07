@@ -43,7 +43,7 @@
         </a>
         <nav class="header-nav">
             <ul class="main-menu">
-                <li><a href="../Home/Index" @*class="active"*@>Home</a></li>
+                <li><a asp-controller="Home" asp-action="Index" class="">Home</a></li>
                 <li><a asp-controller="Home" asp-action="AboutUs" class="">About Us</a></li>
                 @*<li>
                         <a href="#">Pages</a>
@@ -53,10 +53,10 @@
                         </ul>
                     </li>*@
                 <li><a href="news.html" class="">News</a></li>
-                <li><a href="contact.html" class="">Contact</a></li>
+                <li><a asp-controller="Home" asp-action="Contact" class="">Contact</a></li>
             </ul>
             <div class="header-right">
-                <a href="#" class="hr-btn"><i class="flaticon-029-telephone-1"></i>Call us now! </a>
+                <a asp-controller="Home" asp-action="Contact" class="hr-btn"><i class="flaticon-029-telephone-1"></i>Call us now! </a>
                 <div class="hr-btn hr-btn-2">+359 123 456 789</div>
             </div>
         </nav>
@@ -112,11 +112,17 @@
     </footer>
     <!-- Footer Section end -->
     <!--====== Javascripts & Jquery ======-->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/js/jquery-3.2.1.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
     <script src="~/js/bootstrap.min.js"></script>
+
     <script src="~/js/jquery.slicknav.min.js"></script>
     <script src="~/js/owl.carousel.min.js"></script>
+
     <script src="~/js/jquery-ui.min.js"></script>
     <script src="~/js/main.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

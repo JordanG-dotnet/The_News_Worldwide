@@ -1,0 +1,79 @@
+﻿@model EmailFormViewModel
+<!-- Page top Section end -->
+<section class="page-top-section set-bg" data-setbg="../../img/page-top-bg/4.jpg">
+    <div class="container">
+        <h2>Contact</h2>
+        <nav class="site-breadcrumb">
+            <a class="sb-item" asp-controller="Home" asp-action="Index">Home</a>
+            <span class="sb-item active">Contact</span>
+        </nav>
+    </div>
+</section>
+<!-- Page top Section end -->
+<!-- Contact Section end -->
+<section class="contact-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="contact-text">
+                    <h2>Get in touch</h2>
+                    <p>If you have incountered any problems, have any sugetions, found bugs or just want to contact us simply fill in the contact form and hit the "Send Message" button. We will contact you back as soon as possible. Or check out any of the social medias, just follow the links bellow. </p>
+                    <ul>
+                        <li><i class="flaticon-032-placeholder"></i>1000 Sofia Center, Sofia, Bulgaria</li>
+                        <li><i class="flaticon-029-telephone-1"></i>+359 123 456 789</li>
+                        <li><i class="flaticon-025-arroba"></i>dancho.development@gmail.com</li>
+                        <li><i class="flaticon-038-wall-clock"></i>Everyday: 08:00 -22:00</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a>
+                        <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <form asp-controller="Email" asp-action="SendEmail" class="contact-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                            <input type="text" asp-for="Name" placeholder="Your Name">
+
+                        </div>
+                        <div class="col-md-6">
+                            <span asp-validation-for="FromEmail" class="text-danger"></span>
+                            <input type="text" asp-for="FromEmail" placeholder="Your E-mail">
+                        </div>
+                        <div class="col-md-12">
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                            <input type="text" asp-for="Subject" placeholder="Subject">
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                            <textarea placeholder="Your Message" asp-for="Message"></textarea>
+                            <button type="submit" class="site-btn">send message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15092.811991732444!2d23.318511283822918!3d42.68810029604019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8682cb317bf5%3A0x400a01269bf5e60!2sSofia!5e0!3m2!1sen!2sbg!4v1585391131208!5m2!1sen!2sbg" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
+</section>
+<!-- Contact Section end -->
+<!-- Score Section end -->
+<section class="score-section text-white set-bg" data-setbg="../../img/score-bg.jpg" style="opacity: 12">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-8">
+                <h2>Give us a Call</h2>
+                <h4>Or just take a tour of the site and check out all it's options</h4>
+                <a href="#" class="site-btn sb-big">Take that tour</a>
+            </div>
+        </div>
+        <img src="~/img/hand.png" alt="" class="hand-img">
+    </div>
+</section>
+<!-- Score Section end -->

@@ -1,10 +1,9 @@
-﻿
-<!-- Page top Section end -->
+﻿<!-- Page top Section end -->
 <section class="page-top-section set-bg" data-setbg="../../img/page-top-bg/3.jpg">
     <div class="container">
         <h2>Privecy and Policy</h2>
         <nav class="site-breadcrumb">
-            <a class="sb-item" href="@Url.Action("Index", null, new { area = string.Empty, controller = "Home" }, @Context.Request.Scheme)">Home</a>
+            <a class="sb-item" asp-controller="Home" asp-action="Index">Home</a>
             <span class="sb-item active"> Privacy</span>
         </nav>
     </div>
@@ -12,22 +11,38 @@
 <!-- Page top Section end -->
 <!-- Blog Section end -->
 <div class="container">
-    <main role="main">
-        <h2>Sources used:</h2>
-        <ul>
-            <li>
-                <a href="https://newsapi.org" target="_blank">https://newsapi.org</a>
-            </li>
-            <li>
-                <a href="https://startbootstrap.com" target="_blank">https://startbootstrap.com</a>
-            </li>
-            <li>
-                <a href="https://codepen.io/huange/pen/rbqsD" target="_blank">https://codepen.io/huange/pen/rbqsD</a>
-            </li>
-            <li>
-                <a href="https://www.c-sharpcorner.com/article/create-a-pdf-file-and-download-using-Asp-Net-mvc/" target="_blank">https://www.c-sharpcorner.com/article/create-a-pdf-file-and-download-using-Asp-Net-mvc/</a>
-            </li>
-        </ul>
+    <main role="main" class="pb-3">
+        <section class="blog-section spad">
+            <div class="container">
+                <h1>Privacy and Policy</h1>
+                <br />
+                <br />
+                <br />
+                <ol>
+                    <li>
+                        <h4>Private Information</h4>
+                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla facilisi etiam dignissim diam quis enim lobortis. Donec ultrices tincidunt arcu non sodales neque sodales ut. Morbi non arcu risus quis varius. At in tellus integer feugiat scelerisque varius morbi enim. Tempus urna et pharetra pharetra. Aliquam purus sit amet luctus venenatis lectus. Mauris sit amet massa vitae tortor. Mi tempus imperdiet nulla malesuada pellentesque elit eget. Cursus eget nunc scelerisque viverra mauris. Tortor at risus viverra adipiscing at in tellus. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque. Elit ullamcorper dignissim cras tincidunt lobortis feugiat.</div>
+                        <br />
+                    </li>
+                    <li>
+                        <h4>Data storage</h4>
+                        <div>Ultrices vitae auctor eu augue ut lectus. Proin sagittis nisl rhoncus mattis rhoncus urna. Elit sed vulputate mi sit amet mauris commodo quis imperdiet. Bibendum neque egestas congue quisque egestas diam. Quis viverra nibh cras pulvinar. Luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor purus. Tincidunt praesent semper feugiat nibh sed pulvinar proin. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis. Etiam dignissim diam quis enim lobortis scelerisque. Ultricies mi quis hendrerit dolor magna eget. Non tellus orci ac auctor augue mauris augue neque. Pharetra vel turpis nunc eget lorem. Morbi quis commodo odio aenean sed. Suspendisse in est ante in nibh. Volutpat lacus laoreet non curabitur gravida arcu ac tortor.</div>
+                        <br />
+                    </li>
+                    <li>
+                        <h4>Source</h4>
+                        <div>Turpis cursus in hac habitasse platea dictumst. Etiam tempor orci eu lobortis elementum. Nulla facilisi morbi tempus iaculis. Commodo nulla facilisi nullam vehicula ipsum. Eros donec ac odio tempor orci dapibus ultrices in iaculis. At lectus urna duis convallis. Malesuada fames ac turpis egestas sed tempus urna et pharetra. Tristique nulla aliquet enim tortor at auctor. Donec massa sapien faucibus et molestie ac feugiat. Enim neque volutpat ac tincidunt vitae semper quis lectus nulla. Malesuada fames ac turpis egestas sed tempus urna. Massa ultricies mi quis hendrerit. Orci sagittis eu volutpat odio facilisis mauris sit amet. Amet aliquam id diam maecenas ultricies mi.</div>
+                        <div>To check out all the sources used please check out the About page or follow the link: <a class="readmore" asp-controller="Home" asp-action="AboutUs">For about page follow link <img src="~/img/arrow.png" alt=""></a></div>
+                        <br />
+                    </li>
+                    <li>
+                        <h4>Copyright</h4>
+                        <div>Sed blandit libero volutpat sed cras ornare. Nisi porta lorem mollis aliquam ut porttitor. Non arcu risus quis varius quam quisque. Id velit ut tortor pretium viverra. At tempor commodo ullamcorper a lacus vestibulum sed. Odio euismod lacinia at quis risus sed vulputate. Sapien et ligula ullamcorper malesuada proin libero nunc consequat. Proin sed libero enim sed faucibus turpis in eu. Massa eget egestas purus viverra accumsan. Metus dictum at tempor commodo ullamcorper a. Eget nullam non nisi est sit amet. Nibh ipsum consequat nisl vel pretium lectus quam id. Amet nisl suscipit adipiscing bibendum.</div>
+                        <br />
+                    </li>
+                </ol>
+            </div>
+        </section>
     </main>
 </div>
 <!-- Blog Section end -->

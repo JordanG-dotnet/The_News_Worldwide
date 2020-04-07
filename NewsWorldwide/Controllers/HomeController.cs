@@ -11,14 +11,26 @@ namespace NewsWorldwide.Controllers
     {
         public async Task<IActionResult> Index(string country = "bg", int currPage = 1)
         {
-            var topNewsViewModel = new TopNewsViewModel();
-            var list = await GetNews.TopNews(country.ToLower());
-            topNewsViewModel.Articles = list.Skip((currPage - 1) * 3).Take(3);
-            topNewsViewModel.Country = country.ToLower();
-            topNewsViewModel.CurrentPage = currPage;
-            topNewsViewModel.TotalNumPages = Calculations.TotalNumPages(list.Count());
+            try
+            {
+                var topNewsViewModel = new TopNewsViewModel();
+                var list = await GetNews.TopNews(country.ToLower());
+                topNewsViewModel.Articles = list.Skip((currPage - 1) * 3).Take(3);
+                topNewsViewModel.Country = country.ToLower();
+                topNewsViewModel.CurrentPage = currPage;
+                topNewsViewModel.TotalNumPages = Calculations.TotalNumPages(list.Count());
 
-            return View(topNewsViewModel);
+                return View(topNewsViewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Error");
+            }
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
         }
 
         public IActionResult Privacy()
@@ -29,12 +41,6 @@ namespace NewsWorldwide.Controllers
         public IActionResult AboutUs()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -16,25 +16,39 @@ namespace NewsWorldwide.Data
 
         public static async Task<IEnumerable<ArticleViewModel>> TopNews(string country)
         {
-            var cont = Enum.Parse<Countries>(country.ToUpper());
-            var topNews = await newsApiClient.GetTopHeadlinesAsync(new TopHeadlinesRequest()
-            { 
-                Country = cont
-            });
-            var list = topNews.Articles.MapToListArticleViewModel();
-            return list;
+            try
+            {
+                var cont = Enum.Parse<Countries>(country.ToUpper());
+                var topNews = await newsApiClient.GetTopHeadlinesAsync(new TopHeadlinesRequest()
+                {
+                    Country = cont
+                });
+                var list = topNews.Articles.MapToListArticleViewModel();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public static async Task<IEnumerable<ArticleViewModel>> GetSearchResults(string criteria, string language)
         {
-            var lang = Enum.Parse<Languages>(language.ToUpper());
-            var articlesResponse = await newsApiClient.GetEverythingAsync(new EverythingRequest
+            try
             {
-                Q = criteria,
-                Language = lang
-            });
+                var lang = Enum.Parse<Languages>(language.ToUpper());
+                var articlesResponse = await newsApiClient.GetEverythingAsync(new EverythingRequest
+                {
+                    Q = criteria,
+                    Language = lang
+                });
 
-            return articlesResponse.Articles.MapToListArticleViewModel();
+                return articlesResponse.Articles.MapToListArticleViewModel();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
