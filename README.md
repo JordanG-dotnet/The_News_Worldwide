@@ -94,3 +94,8 @@ This is a simple web application that uses newsapi.org to show top news of the d
 - `Each field has a validation of how many symbols min and max that you have to input, if it's required or not and the e-mail field has a validation for a proper e-mail standart syntax.`
 - `By pressing the "Send Message" an e-mail will be send from a hardcoded account with credentials with the data entered in the fields.`
 - `The web application will be published without credentials for an account, for the function to send e-mail, an account will be needed to be add and an e-mail address to which to recieve the send messages.`
+
+## About the author and the web app
+Author: Yordan Gospodinov
+Recently started to take proffeciolanly coding and this is my first personal web application.
+The application uses the RestAPI of NewsAPI.org
