@@ -847,12 +847,12 @@ Footer section
 	list-style: none;
 }
 
-.footer-widget ul li a {
-	display: inline-block;
-	font-size: 14px;
-	color: #ffffff;
-	margin-bottom: 15px;
-}
+	.footer-widget ul li a {
+		display: inline-block;
+		font-size: 14px;
+		color: grey;
+		margin-bottom: 15px;
+	}
 
 .copyright {
 	color: #74757b;

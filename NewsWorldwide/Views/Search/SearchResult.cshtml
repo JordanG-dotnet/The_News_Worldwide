@@ -79,7 +79,7 @@
                             @foreach (var item in Model.Articles)
                             {
                                 <div class="blog-post">
-                                    <img src=@item.URLToImage alt="Image not found" style="width: 800px; height: auto;">
+                                    <img src=@item.URLToImage alt="Image not found" style="width: 700px; height: auto;">
                                     <div class="blog-date">@item.PublishedAt?.ToString("dd MMMM yyyy")</div>
                                     <h2 class="blog-title">@item.Title</h2>
                                     <p>@item.Description</p>

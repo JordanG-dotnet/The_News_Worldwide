@@ -21,7 +21,8 @@ namespace NewsWorldwide.Data
                 var cont = Enum.Parse<Countries>(country.ToUpper());
                 var topNews = await newsApiClient.GetTopHeadlinesAsync(new TopHeadlinesRequest()
                 {
-                    Country = cont
+                    Country = cont,
+                    PageSize = 100
                 });
                 var list = topNews.Articles.MapToListArticleViewModel();
                 return list;
@@ -44,7 +45,8 @@ namespace NewsWorldwide.Data
                 var articlesResponse = await newsApiClient.GetEverythingAsync(new EverythingRequest
                 {
                     Q = criteria,
-                    Language = lang
+                    Language = lang,
+                    PageSize = 100
                 });
 
                 return articlesResponse.Articles.MapToListArticleViewModel();
