@@ -71,6 +71,7 @@ This is a simple web application that uses newsapi.org to show top news of the d
 - `Beneath the pagination for the list of top news is a download button which when pressing will generate and download on your PC or Mac a PDF file containing a list with all the top news with titles and links to the published site.`
 
 ### Search Results
+- `The search is made in the description of the article`
 - `If your search was successful you will see your results 3 per page, which is again hardcoded and user cannot change.`
 - `If your search is unsuccessful you will see a message stating that we couldn't find anything and three guid tips: place another search in a different language, go to home page or contact us and a link to contact page.`
 - `Again, under the search pagination you will find a download button for a PDF file with a list of results.`
