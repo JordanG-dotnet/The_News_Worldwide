@@ -6,6 +6,7 @@ This is a simple web application that uses newsapi.org to show top news of the d
 ### Home Page
 - `You have displayed the top news of the day for the default country, which is Bulgaria (BG).`
 - `The list of news is devided 3 results per page which is hardcoded and cannot be changed from the client.`
+- `Eeach result has a link to the original published site where you can read the full article.`
 - `On the side you can choose from which country you want to see the top news.`
 - `The list of countries is:`
  > Argentina,
@@ -62,3 +63,8 @@ This is a simple web application that uses newsapi.org to show top news of the d
  > United Kingdom,
  > United States,
  > Venuzuela
+- `There is a search bar for searching by keyword in a specified language.`
+- `Next to the search bar you can chose in which language you want to search.`
+- `Beneath the pagination for the list of top news is a download button which when pressing will generate and download on your PC or Mac a PDF file containing a list with all the top news with titles and links to the published site.`
+
+### Search Results
