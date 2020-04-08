@@ -1,6 +1,6 @@
 # The News Worldwide
 ## NEWS2GO
-![] (NewsWorldwide/wwwroot/img/NEWS2GO-logo1.tif)
+![](NewsWorldwide/wwwroot/img/NEWS2GO-logo1.tif)
 
 This is a simple web application that uses newsapi.org to show top news of the day or search for news. You can download a PDF file with the listed results. What you can do on the site:
 
