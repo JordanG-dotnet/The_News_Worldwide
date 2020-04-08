@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NewsWorldwide.Models;
 using NewsWorldwide.Data;
 using System.Threading.Tasks;
+using System;
 
 namespace NewsWorldwide.Controllers
 {
@@ -22,9 +23,17 @@ namespace NewsWorldwide.Controllers
 
                 return View(topNewsViewModel);
             }
-            catch
+            catch (InvalidOperationException)
             {
-                return RedirectToAction("Error", "Error");
+                return RedirectToAction("Error",$"Error", new { statusCode = "404", message = "Specified Country was not found!"});
+            }
+            catch (ArgumentNullException)
+            {
+                return RedirectToAction("Error", "Error", new { statusCode = "503", message = "Server unavailable!" });
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Error", "Error", new { statusCode = "400", message = "Something went wrong!" });
             }
         }
 

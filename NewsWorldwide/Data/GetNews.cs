@@ -26,9 +26,13 @@ namespace NewsWorldwide.Data
                 var list = topNews.Articles.MapToListArticleViewModel();
                 return list;
             }
-            catch (Exception ex)
+            catch (ArgumentNullException)
             {
-                throw new Exception(ex.Message);
+                throw new ArgumentNullException();
+            }
+            catch (Exception)
+            {
+                throw new InvalidOperationException();
             }
         }
 
@@ -45,9 +49,13 @@ namespace NewsWorldwide.Data
 
                 return articlesResponse.Articles.MapToListArticleViewModel();
             }
-            catch (Exception ex)
+            catch (ArgumentNullException)
             {
-                throw new Exception(ex.Message);
+                throw new ArgumentNullException();
+            }
+            catch (Exception)
+            {
+                throw new InvalidOperationException();
             }
         }
     }

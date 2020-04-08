@@ -45,14 +45,7 @@
             <ul class="main-menu">
                 <li><a asp-controller="Home" asp-action="Index" class="">Home</a></li>
                 <li><a asp-controller="Home" asp-action="AboutUs" class="">About Us</a></li>
-                @*<li>
-                        <a href="#">Pages</a>
-                        <ul class="sub-menu">
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="elements.html">elements</a></li>
-                        </ul>
-                    </li>*@
-                <li><a href="news.html" class="">News</a></li>
+                <li><a asp-controller="Home" asp-action="Privacy" class="">Privacy</a></li>
                 <li><a asp-controller="Home" asp-action="Contact" class="">Contact</a></li>
             </ul>
             <div class="header-right">
@@ -70,38 +63,28 @@
         <div class="container">
             <div class="row">
                 <div class="footer-widget col-lg-3 col-sm-6">
-                    <form class="contact-form">
-                        <h2>About us</h2>
-                        <ul>
-                            <li><a asp-controller="Home" asp-action="AboutUs">About us</a></li>
-                            <li><a asp-action="Privacy">Privacy policy</a></li>
-                            <li><a href="#">Loans</a></li>
-                            <li><a href="#">Car loans</a></li>
-                            <li><a href="#">Debt consolidation loans</a></li>
-                            <li><a href="#">Home improvement loans</a></li>
-                        </ul>
-                    </form>
+                    <h2>Sitemap</h2>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="Home" asp-action="AboutUs">About us</a></li>
+                        <li><a asp-controller="Home" asp-action="Privacy">Privacy policy</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">Contact us</a></li>
+                        <li><a asp-controller="Home" asp-action="AboutUs">Sources used</a></li>
+                    </ul>
                 </div>
                 <div class="footer-widget col-lg-8 col-sm-6">
-                    <form asp-controller="Email" asp-action="SendEmail" class="contact-form">
-                        <h2>Contact us</h2>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" name="name" placeholder="Your Name">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" name="fromEmail" placeholder="Your E-mail">
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text" name="subject" placeholder="Subject">
-                                <textarea placeholder="Your Message" name="message" style="height: 100px"></textarea>
-                                <button type="submit" class="site-btn">send message</button>
-                            </div>
-                        </div>
-                    </form>
+                    <h2>Social Medias</h2>
+                    <ul>
+                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-official"></i> - Facebook</a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i> - Instagram</a></li>
+                        <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin-square"></i> - Linkedin</a></li>
+                        <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest-square"></i> - Pinterest</a></li>
+                        <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter-square"></i> - Twitter</a></li>
+                        <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube-square"></i> - Youtube</a></li>
+                    </ul>
                 </div>
             </div>
-            <p>This web site is created as a project portfolio for the sole purpose of presenting it to hiring teams. The design template is the fre download version of LOANS2GO, which you can find on the following link: <a href="https://colorlib.com/wp/template/loans2go/" target="_blank">https://colorlib.com/wp/template/loans2go/</a> </p>
+            <p>This web site is powered by <a href="https://newsapi.org/pricing">NewsAPI.org</a>, for more information just follow the link by pressing the name. The design template is the free download version of LOANS2GO, which you can find on the following link: <a href="https://colorlib.com/wp/template/loans2go/" target="_blank">LOANS2GO</a> </p>
             <div class="copyright">
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 Copyright &copy;
@@ -116,10 +99,8 @@
     <script src="~/js/jquery-3.2.1.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/js/bootstrap.min.js"></script>
-
     <script src="~/js/jquery.slicknav.min.js"></script>
     <script src="~/js/owl.carousel.min.js"></script>
-
     <script src="~/js/jquery-ui.min.js"></script>
     <script src="~/js/main.js"></script>
 
