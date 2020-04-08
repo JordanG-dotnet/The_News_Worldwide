@@ -76,3 +76,21 @@ This is a simple web application that uses newsapi.org to show top news of the d
 - `If your search is unsuccessful you will see a message stating that we couldn't find anything and three guid tips: place another search in a different language, go to home page or contact us and a link to contact page.`
 - `Again, under the search pagination you will find a download button for a PDF file with a list of results.`
 - `Also again will find a list of countries which will redirect to home page with top news of the chosen country.`
+
+### About Us
+- `There is a brief information about the site and its fitures.`
+- `There is brief information about sources used to build the site and links to the sites.`
+
+### Privecy and Policy
+- `Brief information about private information used on the site.`
+- `Brief information about storing data.`
+- `Brief information on the sources used.`
+- `Brief information on copyrights.`
+
+### Contact
+- `There is a google maps with the location of the city Sofia.`
+- `There is a contact form for sending e-mail.`
+- `The form contains the fields: Your Name, From E-mail, Subject and Message.`
+- `Each field has a validation of how many symbols min and max that you have to input, if it's required or not and the e-mail field has a validation for a proper e-mail standart syntax.`
+- `By pressing the "Send Message" an e-mail will be send from a hardcoded account with credentials with the data entered in the fields.`
+- `The web application will be published without credentials for an account, for the function to send e-mail, an account will be needed to be add and an e-mail address to which to recieve the send messages.`
