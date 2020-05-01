@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using NewsAPI.Models;
+﻿using System.Collections.Generic;
 
 namespace NewsWorldwide.Models
 {

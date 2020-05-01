@@ -1,10 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using NewsWorldwide.Models;
 using NewsWorldwide.Data;
 using System.Threading.Tasks;
-using System;
 
 namespace NewsWorldwide.Controllers
 {

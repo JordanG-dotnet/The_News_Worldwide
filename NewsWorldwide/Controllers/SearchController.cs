@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
-using NewsWorldwide.Data;
-using NewsWorldwide.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using NewsWorldwide.Data;
+using NewsWorldwide.Models;
 
 namespace NewsWorldwide.Controllers
 {
