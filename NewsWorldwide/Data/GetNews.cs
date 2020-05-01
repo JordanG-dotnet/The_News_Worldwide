@@ -11,7 +11,8 @@ namespace NewsWorldwide.Data
 {
     public static class GetNews
     {
-        private static readonly string apiKey = "10c6e0f03663414faeeb4ec6bc798bf4";
+        //FOR THE apiKey PLEASE GO TO NewsAPI.org and REGISTER FOR YOUR VERY OWN KEY
+        private static readonly string apiKey = "your key here";
         private static readonly NewsApiClient newsApiClient = new NewsApiClient(apiKey);
 
         public static async Task<IEnumerable<ArticleViewModel>> TopNews(string country)
