@@ -18,7 +18,13 @@ namespace NewsWorldwide.Controllers
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
             smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new System.Net.NetworkCredential("yourmailhere@gmail.com", "yourpassword");
+            //For NetworkCredentials enter the account credentials
+            /*
+             * NetworkCredentials(string userName, string password)
+             * userName = example@gmail.com
+             * password = yourpassword
+             */
+            smtpClient.Credentials = new System.Net.NetworkCredential("example@gmail.com", "yourpassword");
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.EnableSsl = true;
             MailMessage mail = new MailMessage();
